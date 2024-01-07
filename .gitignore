@@ -1,0 +1,8 @@
+node_modules
+extra
+compress
+client
+.env
+# Local Netlify folder
+.netlify
+.vercel
