@@ -19,7 +19,6 @@ const Data = () => {
 
   const paperSubmitHandler = () => {
     localStorage.removeItem("ExamAuth");
-    navigate('/student/success')
   };
 
   return (
@@ -30,7 +29,14 @@ const Data = () => {
         className="examBoard"
         method="POST"
         action={`${process.env.REACT_APP_API_URL}/api/v1/user/submitpaper`}
+        onSubmit={paperSubmitHandler}
       >
+        <input type="hidden" name="registerId" value={data.registerId} />
+        <input type="hidden" name="name" value={data.name} />
+        <input type="hidden" name="email" value={data.email} />
+        <input type="hidden" name="course" value={data.course} />
+        <input type="hidden" name="_id" value={data._id} />
+
         {stdPaper.map((item) => {
           return (
             <ul className="questionLayer">
@@ -61,7 +67,6 @@ const Data = () => {
         <OpeationButton
           className="primary"
           type="submit"
-          onClick={paperSubmitHandler}
         >
           Paper Submit
         </OpeationButton>

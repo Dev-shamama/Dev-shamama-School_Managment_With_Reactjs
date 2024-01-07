@@ -24,7 +24,7 @@ router.post("/user/loginexampassword", isAuthenticatedUser, loginExamPassword);
 
 // Exam Paper
 router.get("/user/getpaper/:course", isAuthenticatedUser, getPaper);
-router.post("/user/submitpaper", isAuthenticatedUser, submitPaper);
+router.post("/user/submitpaper", submitPaper);
 
 // Marks
 router.get("/user/getmarkssingle", isAuthenticatedUser, getMarksSingle);

@@ -160,9 +160,10 @@ exports.getPaper = catchAsyncError(async (req, res) => {
 
 // USER SUBMIT PAPER
 exports.submitPaper = catchAsyncError(async (req, res) => {
-  const { registerId, name, email, course, _id } = req.user;
+  const { registerId, name, email, course, _id } = req.body;
   const getQuestionExam = await Exam.find();
   const receiveAnswer = req.body.checkid;
+  // res.json({success: "message", data: req.body, question: getQuestionExam});
 
   let correctAnswers = [];
   let marks = 0;
@@ -215,7 +216,7 @@ exports.submitPaper = catchAsyncError(async (req, res) => {
   });
   await CreateOnMarksPaper.save();
 
-  res.redirect(`${process.env.BASE_URL}/student/success`);
+  return res.redirect(`${process.env.BASE_URL}/student/success`);
 });
 
 // USER SINGLE MARKS
